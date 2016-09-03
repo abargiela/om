@@ -1,0 +1,23 @@
+openmeetings:
+  build: .
+  ports:
+    - "80:80"
+    - "5080:5080"
+  links:
+    - mariadb
+
+mariadb:
+  #build: ./mariadb/
+  image: mariadb:latest
+  environment:
+    - "MYSQL_ROOT_PASSWORD=123456"
+    - "MYSQL_DATABASE=open311"
+    - "MYSQL_USER=open311"
+    - "MYSQL_PASSWORD=123456"
+  volumes_from:
+    - mysql_volume 
+  volumes:
+    - /var/log/mysql/:/var/log/mysql/ 
+    - /var/run/mysqld/:/var/run/mysqld/
+  ports:
+    - "3306:3306"
