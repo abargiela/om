@@ -14,10 +14,9 @@ mariadb:
     - "MYSQL_DATABASE=open311"
     - "MYSQL_USER=open311"
     - "MYSQL_PASSWORD=123456"
-  volumes_from:
-    - mysql_volume 
   volumes:
     - /var/log/mysql/:/var/log/mysql/ 
     - /var/run/mysqld/:/var/run/mysqld/
+    - /var/lib/mysql/:/var/lib/mysql/
   ports:
     - "3306:3306"
